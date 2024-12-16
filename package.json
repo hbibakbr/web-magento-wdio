@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.js",
-    "allure-report" : "allure generate results/allure-results/ --clean && allure open"
+    "allure-report": "allure generate results/allure-results/ --clean && allure open"
   },
   "author": "habib",
   "license": "ISC",
@@ -16,5 +16,8 @@
     "@wdio/cucumber-framework": "^9.4.2",
     "@wdio/local-runner": "^9.4.2",
     "@wdio/spec-reporter": "^9.4.2"
+  },
+  "dependencies": {
+    "web-magento-wdio": "file:"
   }
 }

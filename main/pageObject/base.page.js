@@ -8,21 +8,17 @@ class BasePage {
         return '//ul[@class="header links"]//li[2]'; 
     }
 
-    get authPageTitle() { 
-        return '.base'; 
+    get customerMenu() {
+        return 'button[data-action="customer-menu-toggle"]'
     }
 
     // Method
-    async navigateToHomeBase() {
-        await wdioAction.navigateToUrl('/');
+    async navigateToHomeBase(url) {
+        await wdioAction.navigateToUrl(url);
     }
 
     async clickOnSignInButton() {
         await wdioAction.clickOn(this.signInButton);
-    }
-
-    async loginPageHaveTitle(title) {
-        await wdioExpect.toHaveText(this.authPageTitle, title);
     }
 }
 

@@ -6,8 +6,20 @@ class WdioHelper {
      * @param {string} url - Home base url
      */
     async navigateToUrl(url) {
-        await browser.maximizeWindow();
-        await browser.url(url);
+        try {
+            await browser.maximizeWindow();
+            await browser.url(url);
+            await browser.waitUntil(
+                () => browser.execute(() => document.readyState === 'complete'),
+                {
+                    timeout: 10000,
+                    timeoutMsg: 'Halaman tidak sepenuhnya dimuat',
+                }
+            );
+        } catch (error) {
+            console.error('Error navigating to URL:', error.message);
+            throw error;
+        }
     }
 
     /**
@@ -37,7 +49,7 @@ class WdioHelper {
     async enterText(selector, text) {
         const element = await $(selector);
         await element.waitForDisplayed();
-        await element.setValue(value);
+        await element.setValue(text);
     }
 }
 

@@ -127,8 +127,8 @@ exports.config = {
     reporters: ['spec', 
         ['allure', {
             outputDir: './results/allure-results/',
-            disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: true,
+            useCucumberStepReporter: true
         }]
     ],
 
@@ -237,7 +237,8 @@ exports.config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
+    // beforeScenario: async function (world, context) {
+    //     await browser.maximizeWindow();
     // },
     /**
      *
@@ -271,7 +272,7 @@ exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {object}                 context          Cucumber World object
      */
-    // afterScenario: function (world, result, context) {
+    // afterScenario: async function (world, result, context) {
     // },
     /**
      *
