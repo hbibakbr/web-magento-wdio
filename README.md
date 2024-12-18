@@ -9,7 +9,6 @@ This project focused on practicing functional web automation testing on the Mage
 ## 🚀 Project Overview
 
 The project by file feature include:
-- **base.feature**: Automate test for the common user flow.
 - **login.feature**: Automate scenario of the login proccess with the positive and negative flow.
 - **register.featuret**: Automate scenario of the register proccess with the positive and negative flow.
 
@@ -23,7 +22,7 @@ The project by file feature include:
     └───steps
  ```
 
-## Screenshot of Checkout Feature
+## Screenshot of Allure Reporter
 
 ![Order Suite Report](###)
 
