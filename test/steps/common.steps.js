@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 const BasePage = require('../../main/pageObject/base.page.js');
 const LoginPage = require('../../main/pageObject/login.page.js');
 
-Given(/^user access login page (.+)$/, async (url) => {
+Given(/^user access page (.+)$/, async (url) => {
     await BasePage.navigateToHomeBase(url);
 });
 

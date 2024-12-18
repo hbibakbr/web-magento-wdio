@@ -29,6 +29,21 @@ class WdioExpect {
         }
     }
 
+        /**
+     * Helper function to check if an element is not displayed
+     * @param {string} selector - CSS or XPath selector for the element
+     * @returns {boolean} - Returns true if the element is not displayed, otherwise false
+     */
+        async isNotDisplayed(selector) {
+            try {
+                const element = await $(selector);
+                return !(await element.isDisplayed());
+            } catch (error) {
+                // If the element is not found, consider it as not displayed
+                return true;
+            }
+        }
+
     /**
      * Helper function to verify URL contains a specific path
      * @param {string} expectedPath - Path expected to be in the URL

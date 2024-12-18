@@ -13,8 +13,8 @@ When(/^user click sign in button$/, async () => {
     await LoginPage.clickOnSignInButton();
 });
 
-Then(/^system display error message: (.+)$/, async (message) => {
-    await LoginPage.errorMessageOrEmailErrorIsHaveText(message);
+Then(/^system login display error message: (.+)$/, async (message) => {
+    await LoginPage.errorMessageIsDisplayed(message);
 });
 
 Then(/^icon cart is displayed$/, async () => {

@@ -51,6 +51,20 @@ class WdioHelper {
         await element.waitForDisplayed();
         await element.setValue(text);
     }
+
+    /**
+     * Helper function to check if an element to Be Displayed
+     * @param {string} selector - CSS or XPath selector for the element
+     * @returns {boolean} True if the element is exist, false otherwise
+     */
+    async isExisting(selector) {
+        try {
+            const element = await $(selector);
+            return element.isExisting();
+        } catch (error) {
+            throw new Error(`isExisting failed for selector '${selector}': ${error.message}`);
+        }
+    }
 }
 
 module.exports = new WdioHelper();

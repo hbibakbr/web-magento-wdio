@@ -12,7 +12,7 @@ class LoginPage {
     }
 
     get emailError() { 
-        return 'div[id=email-error]'; 
+        return 'div[id="email-error"]'; 
     }
 
     get passwordField() { 
@@ -31,7 +31,7 @@ class LoginPage {
         return 'a[class="action showcart"]'; 
     }
 
-    // Method
+    // Method Action
     async inputEmail(text) {
         await wdioAction.enterText(this.emailField, text);
     }
@@ -44,6 +44,7 @@ class LoginPage {
         await wdioAction.clickOn(this.signInButton);
     }
 
+    // Method assertion
     async loginPageHaveTitle(title) {
         await wdioExpect.toHaveText(this.loginPageTitle, title);
     }
@@ -56,14 +57,17 @@ class LoginPage {
         await wdioExpect.toHaveText(this.errorMessage, message);
     }
 
-    async errorMessageOrEmailErrorIsHaveText(message) {
-        try {
-            await this.errorMessageIsHaveText(message);
-        } catch (e) {
-            await this.errorEmailIsHaveText(message);
+    async errorMessageIsDisplayed(message) {
+        const isErrorMessagePresent = await wdioAction.isExisting(this.errorMessage)
+        if (isErrorMessagePresent) {
+            await this.errorMessageIsHaveText(message)
+        } else {
+            const isEmailErrorPresent = await wdioAction.isExisting(this.emailError);
+            if (isEmailErrorPresent) {
+                await this.errorEmailIsHaveText(message);
+            }
         }
     }
-    
 
     async iconCartIsDisplayed() {
         await wdioExpect.isDisplayed(this.iconCart);
